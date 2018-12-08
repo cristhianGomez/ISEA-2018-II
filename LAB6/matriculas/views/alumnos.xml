@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="matriculas.list_alumno">
+      <field name="name">Listado</field>
+      <field name="model">matriculas.alumno</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="age"/>
+          <field name="correo_e"/>
+          <field name="celphone"/>
+        </tree>
+      </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="matriculas.action_window_alumno">
+      <field name="name">Ventana Alumnos</field>
+      <field name="res_model">matriculas.alumno</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="matriculas.action_server">
+      <field name="name">matriculas server</field>
+      <field name="model_id" ref="model_matriculas_matriculas"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+       
+    <!-- menu categories -->
+
+    <menuitem name="Alumno" id="matriculas.alumno" parent="matriculas.menu_root"/>
+    <!--<menuitem name="Menu 2" id="matriculas.menu_2" parent="matriculas.menu_root"/>-->
+
+    <!-- actions -->
+    
+    <menuitem name="Listado" id="matriculas.alumno_list" parent="matriculas.alumno"
+              action="matriculas.action_window_alumno"/>
+    <!-- <menuitem name="Server to list" id="matriculas" parent="matriculas.menu_2"
+              action="matriculas.action_server"/> -->
+   
+  </data>
+</odoo>
